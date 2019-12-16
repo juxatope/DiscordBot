@@ -1,10 +1,14 @@
 import discord
+import os
 from cowpy import cow
 from discord.ext import commands
 import rat
 
-onlineList=[]
-offlineList=[]
+AUTH_ENV_KEY = 'D_BOT_AUTH'
+auth = os.getenv(AUTH_ENV_KEY)
+
+onlineList = []
+offlineList = []
 bot = commands.Bot(command_prefix = '.')
 
 @bot.event
@@ -51,7 +55,4 @@ async def chooseGame(ctx):
         await ctx.send("off:"+user)
         print("off:"+user)
     
-bot.run('Put Your Own Key In You Bitch')
-
-
-
+bot.run(auth)
